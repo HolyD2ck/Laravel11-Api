@@ -11,5 +11,5 @@ class EmployersController extends Controller
         $employer = Employers::all();
         return response()->json($employer);
     }
-    //ds
+    
 }
