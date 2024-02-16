@@ -66,7 +66,6 @@ Route::get('employers/export2',function () {
     
     $section = $phpWord->addSection();
    
-
     $data = Employers::all();
 
     foreach($data as $row) {
