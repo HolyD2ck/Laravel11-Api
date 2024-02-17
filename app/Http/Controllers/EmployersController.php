@@ -80,12 +80,12 @@ class EmployersController extends Controller
     $writer->save('php://output');
     }
     public function export2(){
+        
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
     
         $section = $phpWord->addSection();
        
         $data = Employers::all();
-    
         foreach($data as $row) {
             $text = '';
             $attributes = $row->getAttributes();
@@ -94,11 +94,17 @@ class EmployersController extends Controller
                 $text .= $cell . ' ';
             }
             $section->addText(rtrim($text));
-        }
+        } 
+     
+    
         header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         header('Content-Disposition: attachment; filename="myfile.docx"');
-    
+       
         $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
-        $objWriter->save('php://output');
+        
+        $objWriter->save('php://output');      
+      
+       
+
     }
 }
